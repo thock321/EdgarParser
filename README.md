@@ -6,9 +6,13 @@ An SEC Edgar parser that can parse mutual fund holdings and print them to a tab-
 
 ### Prerequisites
 
+Run 
+
 ```
-BeautifulSoup 4
+pip install -r requirements.txt
 ```
+
+To get all required libraries installed.
 
 ## Running tests
 
