@@ -16,7 +16,7 @@ To get all required libraries installed.
 
 ## Running tests
 
-Simply run `test.py` to test functionality.  It will parse a list of pre-determined CIKs and output them to a tab-separated file.
+Simply run `test.py` to test functionality.  It will parse a list of pre-determined CIKs and output them to tab-separated files.
 
 ## Usage
 
@@ -33,7 +33,7 @@ CIK = '0001166559'
 ep = EdgarParser(cik=CIK)
 ```
 
-By default, `EdgarParser` will get the latest mutual fund holdings data occurrence.  For example, if fund XXX last reported holdings was on 5/30/2017, then EdgarParser will get the holdings reported on 5/30/2017 instead of the latest filing date.
+By default, `EdgarParser` will get the latest mutual fund holdings data occurrence.  For example, if fund XXX's last reported holdings was on 5/30/2017, then EdgarParser will get the holdings reported on 5/30/2017 instead of the latest filing date.
 If you only want mutual fund holdings from the latest 13F filing, then specify `get_last_holding` to be FALSE.
 
 ```
@@ -51,6 +51,7 @@ ep = EdgarParser(cik=tckr)
 If you want to get holdings before a certain date, simply specify it in the form of 'YYYYMMDD'.
 
 ```
+#Get holdings on or before May 30, 2019
 ep = EdgarParser(cik=CIK, date_before='20170530')
 ```
 
