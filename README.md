@@ -36,7 +36,15 @@ By default, `EdgarParser` will get the latest mutual fund holdings data occurren
 If you only want mutual fund holdings from the latest 13F filing, then specify `get_last_holding` to be FALSE.
 
 ```
+CIK = '0001166559'
 ep = EdgarParser(cik=CIK, get_last_holding=False)
+```
+
+`EdgarParser` also supports tickers in place of CIKs.  Simply use a ticker in place of a CIK in the `cik` argument.
+
+```
+tckr = 'BLK'
+ep = EdgarParser(cik=tckr)
 ```
 
 If you want to get holdings before a certain date, simply specify it in the form of 'YYYYMMDD'.
