@@ -29,6 +29,7 @@ from EdgarParser import EdgarParser
 Here is an example to create an instance of an `EdgarParser` with a specified CIK:
 
 ```
+CIK = '0001166559'
 ep = EdgarParser(cik=CIK)
 ```
 
