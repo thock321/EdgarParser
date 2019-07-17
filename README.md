@@ -12,9 +12,15 @@ BeautifulSoup 4
 
 ## Running tests
 
-Simply run `EdgarParser.py` to test functionality.  It will parse a list of pre-determined CIKs and output them to a tab-separated file.
+Simply run `test.py` to test functionality.  It will parse a list of pre-determined CIKs and output them to a tab-separated file.
 
 ## Usage
+
+First we need to import `EdgarParser`
+
+```
+from EdgarParser import EdgarParser
+```
 
 Here is an example to create an instance of an `EdgarParser` with a specified CIK:
 
@@ -44,6 +50,18 @@ ep.get_latest_file()
 To print the holdings data to a tab-separated file, simply call `fund_holdings_to_tsv`.
 
 ```
+ep.fund_holdings_to_tsv()
+```
+
+Your code should look something like this
+
+```
+from EdgarParser import EdgarParser
+
+CIK = '12345'
+
+ep = EdgarParser(cik=CIK)
+
 ep.fund_holdings_to_tsv()
 ```
 

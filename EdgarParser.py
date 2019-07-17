@@ -96,7 +96,7 @@ class EdgarParser:
             now = dt.datetime.now().strftime('%Y%m%d')
             date = now
             
-        with open('./' + cik + '_' + date + '_output.tsv', 'wt') as out:
+        with open('./' + self.cik + '_' + date + '_output.tsv', 'wt') as out:
             tw = csv.writer(out, delimiter='\t')
             #Write our column names first
             tw.writerow(['Issuer', 'Title of Class', 'CUSIP Number', 'Market Value', 'Amount of Security', 'Type of Security', \
@@ -126,10 +126,3 @@ class EdgarParser:
                     row.append(child.text)
                     col += 1
                 tw.writerow(row)
-    
-ciks = ['0001756111', '0001166559', '0001555283', '0001397545', '0001543160', '0001496147', '0001357955', '0001439289', '0001086364']
-
-
-for cik in ciks:
-    ep = EdgarParser(cik=cik, get_last_holding=True)
-    ep.fund_holdings_to_tsv()
