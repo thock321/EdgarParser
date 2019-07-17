@@ -87,3 +87,39 @@ ep.fund_holdings_to_tsv()
 `EdgarParser.get_latest_file()` Gets the latest holdings reported.
 
 `EdgarParser.fund_holdings_to_tsv()` Outputs the latest holdings to a tab-separated file.
+
+## Extra Notes
+
+### Thought Process
+
+The first thing I did after receiving this assignment was search on Google whether or not there were any existing libraries that parse from Edgar.  To my suprise, there was actually more than one.  However, I tested a couple and didn't feel that they suited my needs.  Therefore, I would have to write my own functions to handle the requirements
+
+First of all, I needed a way to parse an XML file.  Python has a built in library, so that's what I used.  Next, I decided to use the `requests` library and `BeautifulSoup` library to connect to and parse web pages.  Now I had all the tools I needed.
+
+After doing a few searches on Edgar, I realized that the search URL contained arguments for search parameters.  Then, I looked at the page source for 13F filings.  All the links to the filings were id'ed, so I simply needed to get a list of links with that id.  Then, I would just need to find the link in the resulting page that led to the XML file we needed.
+
+To create the tab-separated file, I simply used the built in csv library, and changed the delimiter from a comma to a tab.  I looked at the XML file formats, and realized that some columns were not always used.  I added a manual check to make sure that if the column did not exist, 'N/A' would be written instead.
+
+I realized that some funds, such as BlackRock's, did not have the XML file with all of the holdings.  After looking at more past filings, I realized that they stopped providing the holdings after a certain point.  This is why I added the `get_last_holding` functionality.  However, the holdings that this produces may not be up to date, which is why the functionality can be turned off.
+
+Overall, this was a fun project and I hope I did well.  This is actually the first time I created something like this, so I really appreciate any feedback or constructive criticism on what I can do better.
+
+### Edge Cases Tested
+
+Case 1: Invalid CIK
+
+Result
+
+```
+EdgeParser('123').fund_holdings_to_tsv()
+>There is no holding data for CIK=123
+```
+
+Case 2: Ticker with no 13F filings
+
+Result
+
+```
+EdgeParser('AAPL').fund_holdings_to_tsv()
+>There is no holding data for CIK=AAPL
+```
